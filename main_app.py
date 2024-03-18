@@ -35,7 +35,7 @@ app.layout = html.Div([
 
     html.Div(children=
             [dmc.NavLink(
-                label=f"{page["name"]}", href=page["relative_path"],
+                label=f"{page['name']}", href=page["relative_path"],
                 variant="subtle", id=page["name"], 
                 childrenOffset=20, 
                 icon=DashIconify(icon=navIconList[idx]),
@@ -101,8 +101,3 @@ def hide_dataset_choices(pathname):
 #     [Output(page["name"], "active") for page in dash.page_registry.values()],
 #     [Input("url", "pathname")]
 # )
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
-
