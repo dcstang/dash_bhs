@@ -1,9 +1,7 @@
 import dash
-from dash import html
-from dash import dash_table, html, callback, Input, Output
+from dash import html, callback, Input, Output
 import dash_mantine_components as dmc
 import dash_ag_grid as dag
-import re
 from functions.variable_store import *
 from functions.load_datasets import *
 
