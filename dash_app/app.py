@@ -17,6 +17,8 @@ app = Dash(
     suppress_callback_exceptions=True
 )
 
+server = app.server
+
 # app.scripts.config.serve_locally = False
 navIconList=[
      "bi:house-door-fill",
@@ -101,3 +103,7 @@ def hide_dataset_choices(pathname):
 #     [Output(page["name"], "active") for page in dash.page_registry.values()],
 #     [Input("url", "pathname")]
 # )
+
+# Run the server
+if __name__ == "__main__":
+    app.run_server(debug=True)

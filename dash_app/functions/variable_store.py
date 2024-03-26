@@ -1,9 +1,9 @@
-filepathList = ["../data/06_ukbb_outcome_trimmed_diet_bhs_complete_cases_dash.parquet",
-    "../data/06_ukbb_outcome_trimmed_diet_bhs_complete_cases_pca_subsystem_dash.parquet",
-    "../data/06_ukbb_outcome_trimmed_diet_bhs_lq_complete_cases_dash.parquet",
-    "../data/06_ukbb_outcome_trimmed_diet_bhs_knn_impute_dash.parquet",
-    "../data/06_ukbb_outcome_trimmed_diet_bhs_knn_impute_pca_subsystem_dash.parquet",
-    "../data/06_ukbb_outcome_trimmed_diet_bhs_lq_knn_impute_dash.parquet"]
+filepathList = ["data/06_ukbb_outcome_trimmed_diet_bhs_complete_cases_dash.parquet",
+    "data/06_ukbb_outcome_trimmed_diet_bhs_complete_cases_pca_subsystem_dash.parquet",
+    "data/06_ukbb_outcome_trimmed_diet_bhs_lq_complete_cases_dash.parquet",
+    "data/06_ukbb_outcome_trimmed_diet_bhs_knn_impute_dash.parquet",
+    "data/06_ukbb_outcome_trimmed_diet_bhs_knn_impute_pca_subsystem_dash.parquet",
+    "data/06_ukbb_outcome_trimmed_diet_bhs_lq_knn_impute_dash.parquet"]
 
 bhsNames = ["Complete cases",
             "Complete cases + PCA Biomarker BHS",
