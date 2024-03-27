@@ -1,31 +1,35 @@
 import panel as pn
-import pandas as pd
-import plotly.express as px
-from functions.summariseDemographics import runTableOne
+from components.sidebar_widgets import sideBarWidgetsList, datasetType
+from components.demographics_table import generateDemographicsComponent
+from components.biomarkers_quartiles import generateBiomarkersComponent
+from components.about_section import aboutSectionPane
 
 # completeDf = pd.read_parquet("data/complete_demographics.parquet")
 # imputeDf = pd.read_parquet("data/impute_demographics.parquet")
 
-sidebarInfo = pn.pane.HTML("<h2>⚙️ Settings</h2>")
-sidebarMore = pn.pane.Markdown("Use these settings to explore variations of the results")
-datasetType = pn.widgets.Select(name="Dataset type", 
-                                options=["Original", "Imputed"], 
-                                size=2, width=200)
-
 template = pn.template.MaterialTemplate(
-    title="Biological Health Score | Scientific Dashboard",
-    sidebar=[sidebarInfo, sidebarMore, datasetType],
-    collapsed_sidebar=True,
-    sidebar_width=280
+    logo="assets/white_logo.png",
+    favicon="assets/i_favicon.png",
+    title="    🔬 Biological Health Score | Scientific Dashboard",
+    sidebar=sideBarWidgetsList,
+    collapsed_sidebar=False,
+    sidebar_width=280,
+    header_background="#0000CD"
 )
 
-demographicsTable = pn.bind(runTableOne, datasetType)
+# add reactivity between widget and data 
+# pass output from datasetType (checkboxgroup component) as list
+demographicsTable = pn.bind(generateDemographicsComponent, dfKeyList=datasetType)
+biomarkersCards = pn.bind(generateBiomarkersComponent, dfKeyList=datasetType)
 
-template.main.append(
-    pn.Tabs(
+mainSection = pn.Tabs(
     ("Population Demographics", 
-        pn.pane.HTML(demographicsTable, margin=25)),
-    ("Biomarkers", pn.Accordion("test"))
-))
+        demographicsTable),
+    ("Biomarkers", 
+        biomarkersCards),
+    ("About",
+        aboutSectionPane),
+    dynamic=True)
 
+template.main.append(mainSection)
 template.servable()
