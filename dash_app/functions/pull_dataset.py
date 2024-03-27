@@ -5,6 +5,12 @@ import sys
 sys.path.append("../")
 from functions.variable_store import *
 
+"""
+    use this script for generating smaller datasets for ploomber cloud hackaton
+    idea is to just pull out relevant columns to minimize dataset size
+    (restriction of 50MB upload for free tier)
+"""
+
 completeDf = pd.read_parquet("../data/06_ukbb_outcome_trimmed_diet_bhs_complete_cases_dash.parquet")
 imputeDf = pd.read_parquet("../data/06_ukbb_outcome_trimmed_diet_bhs_knn_impute_dash.parquet")
 
@@ -59,5 +65,13 @@ def getPopulationDemographics(df):
                         "reg_ps", "qual_factor"]
     return df[demographicsList]
 
+def getBiomarkers(df):
+    biomarkersList = metabol + inflam + renal + cardio + hepato
+    baselineBiomarkersList = [x + ".0.0" for x in biomarkersList]
+    return df[baselineBiomarkersList]
+
 getPopulationDemographics(completeDf).to_parquet("../data/subset/complete_demographics.parquet")
 getPopulationDemographics(imputeDf).to_parquet("../data/subset/impute_demographics.parquet")
+
+getBiomarkers(completeDf).to_parquet("../data/subset/complete_biomarkers.parquet")
+getBiomarkers(imputeDf).to_parquet("../data/subset/impute_biomarkers.parquet")

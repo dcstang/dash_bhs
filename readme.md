@@ -6,6 +6,18 @@ Currently, the upstream analysis pipeline is already using `Ploomber`. This live
 
 This is an outshoot from the project for the Ploomber<>Panel Hackaton. I aim to democratise access and understanding of the `health scores` that are being developed within the group, firstly to other scientists in the department -- for further colaboration and ideation. Eventually, I think this could be a useful tool for (rigorous) scientific peer review before actual use in the clinical setting.
 
-As a bit of background, I was initially working on visualisations in Dash/Plotly. But I'll now migrate the work to Panel in view of ease of deployment.
+As a bit of background, I was initially working on visualisations in Dash/Plotly. For the purpose of the hackaton, I will rescope the existing dash app to purely focus on one area of the project and rewriting it into the Panel framework. This will be looking at the data as its original state and an imputed version.
 
-Visit the hackaton app here > [link to app on Ploomber cloud]()
+Visit the hackaton app here > [link to app on Ploomber cloud](https://plain-breeze-4374.ploomberapp.io)
+
+## Features 
+* interactivity and ability to compare two patient populations side-by-side
+* multi-page app with explaination of the project background
+* extensibility with other scientific tools in the future
+
+## Progress logs
+=============
+* 18th March : Ploomber cloud first build and successfully launched dash app
+* 22nd March : Panel tutorials and rewrite
+* 26th March : Redesign and rescope app, initial panel deployment
+* 27th March : Base app pages and logic done, to fully build out viz section
