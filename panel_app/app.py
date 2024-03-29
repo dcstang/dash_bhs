@@ -4,9 +4,6 @@ from components.demographics_table import generateDemographicsComponent
 from components.biomarkers_quartiles import generateBiomarkersComponent
 from components.about_section import aboutSectionPane
 
-# completeDf = pd.read_parquet("data/complete_demographics.parquet")
-# imputeDf = pd.read_parquet("data/impute_demographics.parquet")
-
 template = pn.template.MaterialTemplate(
     logo="assets/white_logo.png",
     favicon="assets/i_favicon.png",

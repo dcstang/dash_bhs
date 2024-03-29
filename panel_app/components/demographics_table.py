@@ -1,6 +1,7 @@
 import pandas as pd
 import panel as pn
 from tableone import TableOne
+from components.variable_store import cardHeaderStylesheet
 
 def runTableOne(dfKeyList):
     # choose table1 reporting columns
@@ -51,10 +52,13 @@ def runTableOne(dfKeyList):
     return outputList
 
 def highlightImputedDataset(dfKey=None):
-    if dfKey is "complete":
-        return ["#bebebe", "#0"]
+    """
+        function to check which card and apply specific 
+    """
+    if dfKey == "complete":
+        return ["#bebebe", "#0", "#d3d3d340"]
     else:
-        return ["#0000CD", "#ffffff"]
+        return ["#0000CD", "#ffffff", "#5c9ac830"]
 
 def generateDemographicsComponent(dfKeyList):
 
@@ -73,11 +77,15 @@ def generateDemographicsComponent(dfKeyList):
     demographicsComponentCards = pn.Column()
 
     for (dataset, name) in zip(populationTableList, dfKeyList):
+        cardColorList = highlightImputedDataset(name)
         demographicsComponentCards.append(
             pn.Card(pn.pane.HTML(dataset, margin=25, styles=tableStyles),
-                    title=f"{name.capitalize()} dataset",
-                    header_background=highlightImputedDataset(name)[0],
-                    header_color=highlightImputedDataset(name)[1]))
+                title=f"{name.capitalize()} dataset",
+                header_background=cardColorList[0],
+                header_color=cardColorList[1],
+                background=cardColorList[2],
+                stylesheets=[cardHeaderStylesheet],
+                styles={'border-radius': '10px'}))
 
     return pn.Row(
         pn.layout.HSpacer(),

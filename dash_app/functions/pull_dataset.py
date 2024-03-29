@@ -66,7 +66,7 @@ def getPopulationDemographics(df):
     return df[demographicsList]
 
 def getBiomarkers(df):
-    biomarkersList = metabol + inflam + renal + cardio + hepato
+    biomarkersList = metabol + cardio + inflam + renal + hepato
     baselineBiomarkersList = [x + ".0.0" for x in biomarkersList]
     return df[baselineBiomarkersList]
 

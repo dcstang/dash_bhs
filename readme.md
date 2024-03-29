@@ -21,3 +21,6 @@ Visit the hackaton app here > [link to app on Ploomber cloud](https://plain-bree
 * 22nd March : Panel tutorials and rewrite
 * 26th March : Redesign and rescope app, initial panel deployment
 * 27th March : Base app pages and logic done, to fully build out viz section
+* 29th March : add visualisation section of app
+
+# TODO: add pictures 

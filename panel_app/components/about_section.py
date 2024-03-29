@@ -17,7 +17,9 @@ Initially, this was built as a `dash` application, but migration to `Panel` was 
 The main advantage is close intergration with other libraries in the PyData space and other scientific toolkits.  
 Examples that I have used several other libraries in combination with Panel, including:
 * matplotlib
+* seaborn
 * tableOne
+* pandas
 * plotly
 * numpy
 
