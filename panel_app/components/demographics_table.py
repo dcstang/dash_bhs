@@ -68,7 +68,7 @@ def generateDemographicsComponent(dfKeyList):
         'background-color': '#F6F6F6', 'border': '2px solid black',
         'border-radius': '10px', 'padding': '10px',
         'padding-left': '10%', 'padding-right': '10%',
-        'width': '750px'
+        'width': '650px'
     }
 
     # create logic for cards display to enable dataset comparisons
@@ -83,9 +83,9 @@ def generateDemographicsComponent(dfKeyList):
                 title=f"{name.capitalize()} dataset",
                 header_background=cardColorList[0],
                 header_color=cardColorList[1],
-                background=cardColorList[2],
-                stylesheets=[cardHeaderStylesheet],
-                styles={'border-radius': '10px'}))
+                styles={'background':cardColorList[2], 
+                        'border-radius': '10px'},
+                stylesheets=[cardHeaderStylesheet]))
 
     return pn.Row(
         pn.layout.HSpacer(),

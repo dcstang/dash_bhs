@@ -5,8 +5,7 @@ import matplotlib.pyplot as plt
 from components.variable_store import cardHeaderStylesheet
 
 custom_params = {"axes.spines.right": False,
-                "axes.spines.top": False,
-                "figure.dpi": 300}
+                "axes.spines.top": False}
 sns.set_theme(style="white", rc=custom_params, font_scale=0.5)
 
 introSection = pn.pane.Markdown(
@@ -85,18 +84,20 @@ def generateBiomarkersComponent(dfKeyList):
     biomarkersComponentList.append(introSection)
 
     biomarkersDistributionList = distributionBiomarkers(dfKeyList)
-    print(cardHeaderStylesheet)
 
     for (fig, name) in zip(biomarkersDistributionList, dfKeyList):
         cardColorList = highlightImputedDataset(name)
 
         biomarkersComponentList.append(
-            pn.Card(pn.pane.Matplotlib(fig, tight=True),
+            pn.Card(pn.pane.Matplotlib(fig, tight=True, 
+                    fixed_aspect=True,
+                    sizing_mode="stretch_width",
+                    format="svg"),
             title=f"{name.capitalize()} dataset",
             header_background=cardColorList[0],
             header_color=cardColorList[1],
-            background=cardColorList[2],
             stylesheets=[cardHeaderStylesheet],
-            styles={'border-radius': '10px'}))
-
+            styles={'border-radius': '10px',
+                    'background':cardColorList[2]}))
+        
     return biomarkersComponentList
